@@ -1,5 +1,6 @@
 package com.fobidlim.mvp_koin.ui.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import com.fobidlim.mvp_koin.R
@@ -16,9 +17,12 @@ class MainActivity : BaseActivity<MainPresenter>(), MainView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        button.setOnClickListener { presenter.onButtonClicked() }
+        button.setOnClickListener { presenter.sum(10, 20) }
     }
 
     override fun showMessage(message: String) =
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+
+    override fun showSecond() =
+        startActivity(Intent(this, SecondActivity::class.java))
 }
